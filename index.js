@@ -92,6 +92,13 @@ async function run() {
       const result = await addReviewCollections.deleteMany(query);
       res.send(result);
     });
+    // single review delete
+    app.delete("/reviewpost/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await addReviewCollections.deleteOne(query);
+      res.send(result);
+    });
   } finally {
   }
 }
