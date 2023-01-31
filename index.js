@@ -82,6 +82,16 @@ async function run() {
     //   const result = await data.toArray();
     //   res.send(result);
     // });
+    // delete all review
+    app.delete("/reviewpost", async (req, res) => {
+      let query = {};
+      if (req.query.email) {
+        query = { email: req.query.email };
+      }
+      console.log(query);
+      const result = await addReviewCollections.deleteMany(query);
+      res.send(result);
+    });
   } finally {
   }
 }
